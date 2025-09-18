@@ -1,1 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Dearest 💌</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      background: #ffe6f0;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+    .card {
+      background: white;
+      margin-bottom:40vh;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 400px;
+      position: relative;
+      z-index: 2;
+    }
+    h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+      color: #e75480;
+      margin-bottom: 20px;
+    }
+    img {
+      width: 100px;
+      border-radius:6px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    img:hover {
+      transform: scale(1.1);
+    }
+    p {
+      margin-top: 20px;
+      color: #555;
+      font-size: 16px;
+    }
 
+    /* Bounce Animation */
+    .bounce {
+      animation: popBounce 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+    @keyframes popBounce {
+      0%   { transform: scale(1); }
+      30%  { transform: scale(1.2); }
+      60%  { transform: scale(0.9); }
+      80%  { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* Floating Hearts */
+    .hearts {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 24px;
+      animation: floatUp linear forwards;
+    }
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to   { transform: translateY(-100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>To My Dearest Felicity,</h2>
+    <img id="envelope" src="https://i.ibb.co/VgB0Tkn/envelope-heart.png" alt="Envelope" onclick="openLetter()">
+    <p>Click the envelope to open your special letter!</p>
+  </div>
+
+  <div class="hearts"></div>
+
+  <script>
+    function openLetter() {
+      const envelope = document.getElementById("envelope");
+      envelope.classList.add("bounce"); // start bounce animation
+
+      // wait for animation to finish, then redirect
+      setTimeout(() => {
+        window.location.href = "page.html";
+      }, 1000); // matches animation duration
+    }
+
+    // Floating hearts generator
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.querySelector(".hearts").appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 700);
+  </script>
+</body>
+</html>
