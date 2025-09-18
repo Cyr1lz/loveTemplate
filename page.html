@@ -1,1 +1,195 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dearest Princess 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', cursive;
+      background: linear-gradient(135deg, #ffe6f0, #fffbe6);
+      text-align: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    .container {
+      border: 2px solid black;
+      border-radius: 20px;
+      background-color: mintcream;
+    }
+    h1 { color: #e75480; font-size: 36px; margin-bottom: 10px; }
+    p { color: #333; font-size: 18px; max-width: 700px; margin: 0 auto 20px; }
+    .secret {
+      border: 2px solid black;
+      margin-top: 40px;
+      margin-left: 20px;
+      margin-right: 20px;
+      border-radius: 10px;
+      background-color: mediumpurple;
+    }
+    .phase1 {
+      border: 2px solid black;
+      margin-top: 90px;
+      margin-left: 20px;
+      margin-right: 20px;
+      border-radius: 10px ;
+      background-color: mediumpurple;
+    }
+    .phase2 {
+      border: 2px solid black;
+      margin: 20px 20px 20px;
+    }
+    .secret button {
+      background: #e75480;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      margin: 10px;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+    .secret button:hover { background: #c73260; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .gallery div {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .gallery div:hover img { transform: scale(1.1); }
+    .caption {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      padding: 8px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      font-size: 14px;
+    }
+        .photo-text {
+            display: none;
+            background-color: #fff3e0;
+            width: 280px;
+            padding: 10px;
+            margin: 10px 10px;
+            border-radius: 10px;
+            border: 2px dashed #ff69b4;
+            color: #4a4a4a;
+            font-size: 14px;
+            text-align: center;
+            position: relative;
+        }
+        .photo-text.show {
+            display: block;
+        }
+    /* Floating hearts */
+    .hearts {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts"></div>
+  
+  <div class="container">
+    <div class="phase1">
+      <h1>My Beautiful Felicity 💖</h1>
+<p>You are my joy, my reason, and my world. Every moment with you feels magical.
+  This little page is just a glimpse of how much you mean to me. 🌹</p>
+    </div>
+  <div class="secret">
+    <h2>Secret Messages ✨</h2>
+    <p>Click each button to discover ghe thoughts i carry about you every day </p>
+    <button onclick="showText(this, 'Another magical sunset moment. 💕')">Secret 1</button>
+    <button onclick="showText(this,'My heart beats for you 💓')">Secret 2</button>
+    <button onclick="showText(this, 'Forever & Always 🌍')">Secret 3</button>
+    <div class="photo-text" id="photoText"></div>
+  </div>
+  
+  <div class="phase2">
+      <h2>Our Memories 📸</h2>
+  <div class="gallery">
+    <div>
+      <img src="https://share.google/E2E0qlzUBT8j0T4x1" alt="Memory 1">
+      <div class="caption">Our sweet moment 💕</div>
+    </div>
+    <div>
+      <img src="img2.jpg" alt="Memory 2">
+      <div class="caption">Smiles forever 😍</div>
+    </div>
+    <div>
+      <img src="img3.jpg" alt="Memory 3">
+      <div class="caption">Unforgettable day 🌹</div>
+    </div>
+  </div>
+  </div>
+  </div>
+  
+  <!-- Final Surprise Button -->
+  <div style="text-align:center; margin-top:40px;">
+    <button onclick="window.location.href='page2.html'" 
+            style="background:#e75480; color:white; padding:12px 24px; 
+                   border:none; border-radius:25px; font-size:18px; cursor:pointer;">
+      💍 Final Surprise 💍
+    </button>
+  </div>
+
+  <script>
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+      document.querySelector(".hearts").appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
+    setInterval(createHeart, 600);
+
+    // Background music (optional)
+    const audio = new Audio("music.mp3"); // put your mp3 file in same folder
+    audio.loop = true;
+    audio.volume = 0.4;
+    audio.play().catch(() => {
+      console.log("Autoplay blocked. Music will play on user interaction.");
+      document.body.addEventListener("click", () => audio.play(), { once: true });
+    });
+    
+    function showText(element, text) {
+  const photoText = document.getElementById('photoText');
+  photoText.textContent = text;
+  photoText.classList.add('show');
+  setTimeout(() => photoText.classList.remove('show'), 5000); // Hide after 5 seconds
+}
+  </script>
+</body>
+</html>
